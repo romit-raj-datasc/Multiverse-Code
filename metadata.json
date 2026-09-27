@@ -1,0 +1,6 @@
+{
+  "name": "GFG Bennett — Infinity Protocol",
+  "description": "Official Marvel-themed flagship hackathon website by GeeksForGeeks Student Chapter, Bennett University. Cinematic interface, live countdown, attendee registration, real-time database, automated confirmations, and admin intelligence console.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
