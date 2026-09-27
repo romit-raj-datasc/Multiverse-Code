@@ -29,14 +29,12 @@ interface AdminDashboardProps {
   isOpen: boolean;
   onClose: () => void;
   onPreviewEmail: (email: SentEmail) => void;
-  onOpenDownload?: () => void;
 }
 
 export const AdminDashboard: React.FC<AdminDashboardProps> = ({
   isOpen,
   onClose,
   onPreviewEmail,
-  onOpenDownload,
 }) => {
   const [attendees, setAttendees] = useState<Attendee[]>([]);
   const [emails, setEmails] = useState<SentEmail[]>([]);
@@ -341,17 +339,6 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({
 
           {/* Quick Actions & CSV Export */}
           <div className="flex items-center gap-2">
-            {onOpenDownload && (
-              <button
-                onClick={onOpenDownload}
-                className="px-3 py-1.5 rounded-lg bg-emerald-950 hover:bg-emerald-900 text-emerald-300 font-semibold text-xs flex items-center gap-1.5 transition-colors border border-emerald-700/60 shadow-sm"
-                title="Download full project package for GFG chapter interview & GitHub"
-              >
-                <Download className="w-3.5 h-3.5" />
-                <span>Project ZIP / GitHub</span>
-              </button>
-            )}
-
             {activeTab === 'attendees' && (
               <>
                 <button

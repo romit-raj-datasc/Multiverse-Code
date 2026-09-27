@@ -4,11 +4,10 @@ import { ShieldAlert, Github, Linkedin, Twitter, MessageSquare, Instagram, Heart
 
 interface FooterProps {
   onOpenAdmin: () => void;
-  onOpenDownload: () => void;
   registeredCount: number;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenAdmin, onOpenDownload, registeredCount }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenAdmin, registeredCount }) => {
   return (
     <footer className="bg-[#05070f] border-t border-slate-900 text-slate-400 py-16 text-xs">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,16 +100,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin, onOpenDownload, reg
               </a>
             </div>
 
-            {/* Organizer & GitHub Project Package Triggers */}
-            <div className="pt-2 flex flex-col sm:flex-row gap-2">
-              <button
-                onClick={onOpenDownload}
-                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-950/70 hover:bg-emerald-900/80 text-emerald-300 hover:text-white border border-emerald-700/60 transition-colors text-xs font-semibold"
-                title="Download Project ZIP & GitHub Repository"
-              >
-                <span>↓ Download Codebase (ZIP)</span>
-              </button>
-
+            {/* Organizer Console Trigger */}
+            <div className="pt-2">
               <button
                 onClick={onOpenAdmin}
                 className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-cyan-300 border border-slate-800 transition-colors text-xs font-semibold"

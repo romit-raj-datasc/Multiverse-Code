@@ -9,16 +9,14 @@ import { Footer } from './components/Footer';
 import { RegistrationModal } from './components/RegistrationModal';
 import { ConfirmationEmailViewer } from './components/ConfirmationEmailViewer';
 import { AdminDashboard } from './components/AdminDashboard';
-import { ProjectDownloadModal } from './components/ProjectDownloadModal';
 import { dbService } from './services/storage';
 import { MarvelArchetype, SentEmail, TrackType } from './types';
-import { ShieldAlert, Download } from 'lucide-react';
+import { ShieldAlert } from 'lucide-react';
 
 export default function App() {
   const [registeredCount, setRegisteredCount] = useState<number>(5);
   const [isRegisterOpen, setIsRegisterOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
-  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [selectedRole, setSelectedRole] = useState<MarvelArchetype>('iron-man');
   const [selectedTrack, setSelectedTrack] = useState<TrackType>('quantum-ai');
   const [previewEmail, setPreviewEmail] = useState<SentEmail | null>(null);
@@ -74,7 +72,6 @@ export default function App() {
       <Navbar
         onOpenRegister={() => setIsRegisterOpen(true)}
         onOpenAdmin={() => setIsAdminOpen(true)}
-        onOpenDownload={() => setIsDownloadOpen(true)}
         registeredCount={registeredCount}
       />
 
@@ -111,19 +108,8 @@ export default function App() {
         <FaqSection />
       </main>
 
-      {/* Floating Persistent Quick Action Dock */}
-      <div className="fixed bottom-6 right-6 z-40 flex items-center gap-3">
-        {/* Project Download Quick Action */}
-        <button
-          onClick={() => setIsDownloadOpen(true)}
-          className="hidden sm:flex items-center gap-2 px-3.5 py-2.5 rounded-full bg-emerald-950/90 hover:bg-emerald-900 text-emerald-300 hover:text-white border border-emerald-500/40 shadow-[0_4px_20px_rgba(16,185,129,0.3)] backdrop-blur-md transition-all duration-200 transform hover:scale-105 active:scale-95 text-xs font-semibold"
-          title="Download Project ZIP & GitHub Repository"
-        >
-          <Download className="w-3.5 h-3.5" />
-          <span>Project ZIP</span>
-        </button>
-
-        {/* Admin Console Launcher */}
+      {/* Floating Persistent Admin HUD Access Launcher */}
+      <div className="fixed bottom-6 right-6 z-40">
         <button
           onClick={() => setIsAdminOpen(true)}
           className="group flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-slate-900/90 hover:bg-slate-800 text-slate-200 hover:text-white border border-cyan-500/40 hover:border-cyan-400 shadow-[0_4px_25px_rgba(6,182,212,0.35)] backdrop-blur-md transition-all duration-200 transform hover:scale-105 active:scale-95"
@@ -146,7 +132,6 @@ export default function App() {
       {/* Footer */}
       <Footer
         onOpenAdmin={() => setIsAdminOpen(true)}
-        onOpenDownload={() => setIsDownloadOpen(true)}
         registeredCount={registeredCount}
       />
 
@@ -178,13 +163,6 @@ export default function App() {
           }
         }}
         onPreviewEmail={handleViewEmail}
-        onOpenDownload={() => setIsDownloadOpen(true)}
-      />
-
-      {/* Project Download & GitHub Repo Package Modal */}
-      <ProjectDownloadModal
-        isOpen={isDownloadOpen}
-        onClose={() => setIsDownloadOpen(false)}
       />
     </div>
   );

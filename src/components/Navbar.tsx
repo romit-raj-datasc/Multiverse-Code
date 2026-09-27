@@ -5,14 +5,12 @@ import { ShieldAlert, Zap, Menu, X } from 'lucide-react';
 interface NavbarProps {
   onOpenRegister: () => void;
   onOpenAdmin: () => void;
-  onOpenDownload: () => void;
   registeredCount: number;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenRegister,
   onOpenAdmin,
-  onOpenDownload,
   registeredCount,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -66,16 +64,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Zone 3: 1-2 Primary Actions */}
-        <div className="flex items-center gap-2.5">
-          {/* Download Project / GitHub package */}
-          <button
-            onClick={onOpenDownload}
-            className="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-emerald-300 hover:text-white bg-emerald-950/70 hover:bg-emerald-900/80 border border-emerald-700/60 rounded-lg transition-colors whitespace-nowrap"
-            title="Download Full Project ZIP & GitHub Repository Script"
-          >
-            <span>Project ZIP</span>
-          </button>
-
+        <div className="flex items-center gap-3">
           {/* Admin & Organizer Portal trigger */}
           <button
             onClick={onOpenAdmin}
@@ -160,16 +149,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           <div className="pt-3 border-t border-slate-800 flex flex-col gap-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenDownload();
-              }}
-              className="w-full flex items-center justify-between px-3 py-2 text-xs font-semibold text-emerald-300 bg-emerald-950/60 border border-emerald-700/60 rounded-lg"
-            >
-              <span>Download Project ZIP & GitHub Package</span>
-              <span>↓</span>
-            </button>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
